@@ -110,3 +110,4 @@ pred['bad_good']=pred
 pred.drop(0,axis=1,inplace=True)
 sub=pd.concat([test['CUST_ID'],pred],axis=1)
 sub.to_csv("D:/submission.csv",index=0)
+
