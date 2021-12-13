@@ -95,8 +95,8 @@ plt.rcParams['font.sans-serif'] = ['SimHei']
 x=np.arange(4)
 width=0.25
 ax=plt.subplot(1,1,1)
-ax.bar(x,times,width,color='r')
-ax.bar(x+width,scores,width,color='b')
+ax.bar(x,times,width,color='r',label="耗时")
+ax.bar(x+width,scores,width,color='b',label="分数")
 ax.set_xticks(x+width)
 ax.set_xticklabels(names)
 ax.legend()
