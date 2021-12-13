@@ -42,9 +42,11 @@ for i in del_features(data):
 
 print(MeaninglessColumns)
 data.drop(MeaninglessColumns, axis=1, inplace=True)
+#不能把test集中的CUST_ID删了！
 MeaninglessColumns.remove("CUST_ID")
 test.drop(MeaninglessColumns, axis=1, inplace=True)
 print(data.head())
+
 # 数据预处理
 # 显示全部
 pd.set_option("display.max_rows", None)
@@ -60,16 +62,16 @@ print(data.duplicated().value_counts())
 # 找出数字列
 data_num = data.select_dtypes(include=[np.number])
 data_non_num = data.select_dtypes(exclude=[np.number])
-# one-hot编码
+# one hot编码
 data_non_num_num = pd.get_dummies(data_non_num)
-# one-hot编码后数据并合并
+# one hot编码后数据并合并
 data = pd.concat([data_num, data_non_num_num], axis=1)
 # 找出数字列
 test_num = test.select_dtypes(include=[np.number])
 test_non_num = test.select_dtypes(exclude=[np.number])
-# one-hot编码
+# one hot编码
 test_non_num_num = pd.get_dummies(test_non_num)
-# one-hot编码后数据并合并
+# one hot编码后数据并合并
 test = pd.concat([test_num, test_non_num_num], axis=1)
 print(data.info())
 print(test.info())
